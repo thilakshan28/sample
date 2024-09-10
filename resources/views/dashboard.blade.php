@@ -13,5 +13,26 @@
                 </div>
             </div>
         </div>
+        <a class="btn btn-warning" href="{{route('post.add')}}" role="button">Add Post</a>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Created By</th>
+            </thead>
+            <tbody>
+                @foreach($posts as $post)
+                    <tr>
+                        <td>{{$post->id}}</td>
+                        <td>{{$post->title}}</td>
+                        <td>{{$post->content}}</td>
+                        <td>{{$post->user->name}}</td>
+                        <td><a href="{{ route('post.edit', $post->id) }}">Edit</a></td>
+                        <td><a href="{{ route('post.delete', $post->id) }}">Delete</a></td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 </x-app-layout>
